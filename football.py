@@ -2,6 +2,8 @@ from typing import Optional
 from ball import BallPlayer
 
 class FootballPlayer(BallPlayer):
+    total_football_players = 0
+
     def __init__(
         self,
         name: str,
@@ -18,11 +20,18 @@ class FootballPlayer(BallPlayer):
         self._touchdowns = touchdowns
         self._passing_yards = passing_yards
 
+        FootballPlayer.total_football_players += 1
+        FootballPlayer.print_creation_log(self)
+
     def print_stats(self):
         touchdowns = self._touchdowns if self._touchdowns is not None else 0
         passing_yards = self._passing_yards if self._passing_yards is not None else 0
         print(f"{self.name} scored {touchdowns} touchdowns and has passed {passing_yards} yards.")
     
+    @staticmethod
+    def print_creation_log(instance):
+        print(f"Football Player '{instance.name}', {instance.age} created; total # of football players {FootballPlayer.total_football_players}.")
+
     @staticmethod
     def parse(raw_data: str) -> "FootballPlayer":
         try:

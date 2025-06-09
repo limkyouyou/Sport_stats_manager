@@ -1,7 +1,16 @@
+from enum import Enum
 from typing import Optional
 from athlete import Athlete
 
+class StrokeStyle(Enum):
+    FREESTYLE = "Freestyle"
+    BUTTERFLY = "Butterfly"
+    BACKSTROKE = "Backstroke"
+    BREASTSTROKE = "Breaststroke"
+
 class Swimmer(Athlete):
+    total_swimmers = 0
+
     def __init__(
         self,
         name: str,
@@ -12,13 +21,20 @@ class Swimmer(Athlete):
         personal_best_time : Optional[float] = None,
     ):
         super().__init__(name, age, country, salary)
-        self._stroke_style = stroke_style
+        self._stroke_style = StrokeStyle(stroke_style) if stroke_style else None
         self._personal_best_time = personal_best_time
+
+        Swimmer.total_swimmers += 1
+        Swimmer.print_creation_log(self)
 
     def print_stats(self):
         time = self._personal_best_time if self._personal_best_time is not None else "N/A"
-        stroke = self._stroke_style if self._stroke_style else "Unknown Stroke Style"
+        stroke = self._stroke_style.value if self._stroke_style else "Unknown Stroke Style"
         print(f"{self.name} swims {stroke} with a personal best time of {time} seconds.")
+
+    @staticmethod
+    def print_creation_log(instance):
+        print(f"Swimmer '{instance.name}', {instance.age} created; total # of swimmers {Swimmer.total_swimmers}.")
 
     @staticmethod
     def parse(raw_data: str) -> "Swimmer":

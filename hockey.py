@@ -8,6 +8,8 @@ class HockeyPosition(Enum):
     GOALIE = "Goalie"
 
 class HockeyPlayer(Athlete):
+    total_hockey_players = 0
+
     def __init__(
         self, 
         name : str, 
@@ -19,23 +21,23 @@ class HockeyPlayer(Athlete):
         stick_brand : Optional[str] = None, 
         skates_size : Optional[int] = None
     ):
-
         super().__init__(name, age, country, salary)
         self._position = HockeyPosition(position) if position else None
         self._goal_scored = goal_scored
         self._stick_brand = stick_brand
         self._skates_size = skates_size
+
+        HockeyPlayer.total_hockey_players += 1
+        HockeyPlayer.print_creation_log(self)
             
     def print_stats(self):
         goals = self._goal_scored if self._goal_scored is not None else 0
         position = self._position.value if self._position else "Unknown Position"
         print(f"{self.name} scored {goals} goals as a {position}.")
 
-    def print_endorsement(self):
-        if self._stick_brand:
-            print(f"{self.name} endorses {self._stick_brand} sticks.")
-        else:
-            print(f"{self.name} has no stick endorsement.")
+    @staticmethod
+    def print_creation_log(instance):
+        print(f"Hockey Player '{instance.name}', {instance.age} created; total # of hockey players {HockeyPlayer.total_hockey_players}.")
 
     @staticmethod
     def parse(raw_data: str) -> "HockeyPlayer":

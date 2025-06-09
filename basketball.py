@@ -2,6 +2,8 @@ from typing import Optional
 from ball import BallPlayer
 
 class BasketballPlayer(BallPlayer):
+    total_basketball_players = 0
+
     def __init__(
         self,
         name: str,
@@ -18,10 +20,17 @@ class BasketballPlayer(BallPlayer):
         self._three_point_pct = three_point_pct
         self._rebounds = rebounds
 
+        BasketballPlayer.total_basketball_players += 1
+        BasketballPlayer.print_creation_log(self)
+
     def print_stats(self):
         three_point_pct = self._three_point_pct if self._three_point_pct is not None else 0.0
         rebounds = self._rebounds if self._rebounds is not None else 0
         print(f"{self.name} has a three-point percentage of {three_point_pct:.2f} and {rebounds} rebounds.")
+
+    @staticmethod
+    def print_creation_log(instance):
+        print(f"Basketball Player '{instance.name}', {instance.age} created; total # of basketball players {BasketballPlayer.total_basketball_players}.")
 
     @staticmethod
     def parse(raw_data: str) -> "BasketballPlayer":
