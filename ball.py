@@ -31,6 +31,10 @@ class BallPlayer(Athlete):
         else:
             print(f"{self.name} has no endorsement.")
 
+    def decrement_counter(self):
+        super().decrement_counter()
+        BallPlayer.total_ball_players = max(0, BallPlayer.total_ball_players - 1)
+
     @staticmethod
     def print_creation_log(instance):
         print(f"Ball Player '{instance.name}', {instance.age} created; total # of ball players {BallPlayer.total_ball_players}.")

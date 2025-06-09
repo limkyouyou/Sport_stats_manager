@@ -22,4 +22,5 @@ Swimmer: Nina Petrovic,30,Breaststroke,,,,
 Swimmer: Omar El-Sayed,22,Freestyle,Egypt,,51.9
 BasketballPlayer: Carlos Mendes,26,São Paulo Panthers,3,Brazil,3100000
 BasketballPlayer: Darius Green,30,Brooklyn Sparks,7,USA,,Under Armour,0.41,5
-BasketballPlayer: Anton Petrov,25,Moscow Giants,15,Russia,3750000,,0.36
+BasketballPlayer: Denis Rodman,25,Moscow Giants,15,Russia,3750000,,0.36
+BasketballPlayer: Denis Rodman,35,Brooklyn Sparks,10,USA,4500000,Under Armour,0.45,7

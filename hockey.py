@@ -35,6 +35,10 @@ class HockeyPlayer(Athlete):
         position = self._position.value if self._position else "Unknown Position"
         print(f"{self.name} scored {goals} goals as a {position}.")
 
+    def decrement_counter(self):
+        super().decrement_counter()
+        HockeyPlayer.total_hockey_players = max(0, HockeyPlayer.total_hockey_players - 1)
+
     @staticmethod
     def print_creation_log(instance):
         print(f"Hockey Player '{instance.name}', {instance.age} created; total # of hockey players {HockeyPlayer.total_hockey_players}.")

@@ -67,4 +67,25 @@ class GUI:
             athlete.print_stats()
         print()
             
-                
+    @staticmethod
+    def get_athlete_name() -> str:
+        return input("Enter the name of the athlete: ").strip()
+    
+    @staticmethod
+    def display_message(message: str):
+        print(message)
+
+    @staticmethod
+    def get_string_input(prompt: str) -> str:
+        return input(prompt).strip()
+    
+    @staticmethod
+    def get_confirmation(prompt: str) -> bool:
+        while True:
+            response = input(prompt + " (y/n): ").strip().lower()
+            if response in ['y', 'yes']:
+                return True
+            elif response in ['n', 'no']:
+                return False
+            else:
+                print("Invalid input, please enter 'y' or 'n'.")

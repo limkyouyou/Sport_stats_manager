@@ -32,6 +32,10 @@ class Swimmer(Athlete):
         stroke = self._stroke_style.value if self._stroke_style else "Unknown Stroke Style"
         print(f"{self.name} swims {stroke} with a personal best time of {time} seconds.")
 
+    def decrement_counter(self):
+        super().decrement_counter()
+        Swimmer.total_swimmers = max(0, Swimmer.total_swimmers - 1)
+
     @staticmethod
     def print_creation_log(instance):
         print(f"Swimmer '{instance.name}', {instance.age} created; total # of swimmers {Swimmer.total_swimmers}.")

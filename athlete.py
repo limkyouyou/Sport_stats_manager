@@ -40,6 +40,9 @@ class Athlete:
     def print_endorsement(self):
         pass
 
+    def decrement_counter(self):
+        Athlete.total_athletes = max(0, Athlete.total_athletes - 1)
+
     def __str__(self):
         return f"Athlete(name={self._name}, age={self._age}, country={self._country}, salary={self._salary})"
 

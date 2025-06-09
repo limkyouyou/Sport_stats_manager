@@ -28,6 +28,10 @@ class BasketballPlayer(BallPlayer):
         rebounds = self._rebounds if self._rebounds is not None else 0
         print(f"{self.name} has a three-point percentage of {three_point_pct:.2f} and {rebounds} rebounds.")
 
+    def decrement_counter(self):
+        super().decrement_counter()
+        BasketballPlayer.total_basketball_players = max(0, BasketballPlayer.total_basketball_players - 1)
+
     @staticmethod
     def print_creation_log(instance):
         print(f"Basketball Player '{instance.name}', {instance.age} created; total # of basketball players {BasketballPlayer.total_basketball_players}.")

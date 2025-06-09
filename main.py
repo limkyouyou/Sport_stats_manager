@@ -23,7 +23,20 @@ class AthletesManagerApp:
                 else:
                     GUI.display_file_loaded_message(False)
             elif choice == '3':
-                continue
+                if self.data.athletes:
+                    athlete_name = GUI.get_string_input("Enter the name of the athlete: ")
+                    atheltes_found = self.data.find_athlete_by_name(athlete_name)
+                    if atheltes_found:
+                        if len(atheltes_found) > 1:
+                            GUI.display_message(f"Multiple athletes found with the name '{athlete_name}':")
+                            confirmation = GUI.get_confirmation("Do you want to delete all of them?")
+                            if not confirmation:
+                                continue
+                        self.data.delete_athlete(athlete_name)
+                    else:
+                        GUI.display_message(f"No athlete found with the name '{athlete_name}'.")
+                else:
+                    GUI.display_file_loaded_message(False)
             elif choice == '4':
                 continue
             elif choice == '5':

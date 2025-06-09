@@ -27,6 +27,10 @@ class FootballPlayer(BallPlayer):
         touchdowns = self._touchdowns if self._touchdowns is not None else 0
         passing_yards = self._passing_yards if self._passing_yards is not None else 0
         print(f"{self.name} scored {touchdowns} touchdowns and has passed {passing_yards} yards.")
+
+    def decrement_counter(self):
+        super().decrement_counter()
+        FootballPlayer.total_football_players = max(0, FootballPlayer.total_football_players - 1)
     
     @staticmethod
     def print_creation_log(instance):

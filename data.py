@@ -75,3 +75,15 @@ class Data:
             "Goals scored": goals_scored,
             "Touchdowns": touchdowns
         }
+
+    def find_athlete_by_name(self, name: str) -> list[Athlete]:
+        return [athlete for athlete in self._athletes if athlete.name.lower() == name.lower()]
+    
+    def delete_athlete(self, name: str):
+        remaining_athletes = []
+        for athlete in self._athletes:
+            if athlete.name.lower() != name.lower():
+                remaining_athletes.append(athlete)
+            else:
+                athlete.decrement_counter()
+        self._athletes = remaining_athletes
