@@ -23,9 +23,9 @@ class Swimmer(Athlete):
     @staticmethod
     def parse(raw_data: str) -> "Swimmer":
         try:
-            position, data = raw_data.split(":", 1)
-            if position.strip() != "Swimmer":
-                raise ValueError("Invalid position for Swimmer")
+            prefix, data = raw_data.split(":", 1)
+            if prefix.strip() != "Swimmer":
+                raise ValueError("Invalid player for Swimmer")
             
             swimmer_data = [item.strip() for item in data.split(",")]
             name = swimmer_data[0]

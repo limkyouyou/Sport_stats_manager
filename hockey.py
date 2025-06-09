@@ -8,7 +8,6 @@ class HockeyPosition(Enum):
     GOALIE = "Goalie"
 
 class HockeyPlayer(Athlete):
-    
     def __init__(
         self, 
         name : str, 
@@ -41,9 +40,9 @@ class HockeyPlayer(Athlete):
     @staticmethod
     def parse(raw_data: str) -> "HockeyPlayer":
         try:
-            position, data = raw_data.split(":", 1)
-            if position.strip() != "HockeyPlayer":
-                raise ValueError("Invalid position for HockeyPlayer")
+            prefix, data = raw_data.split(":", 1)
+            if prefix.strip() != "HockeyPlayer":
+                raise ValueError("Invalid player for HockeyPlayer")
             
             player_data = [item.strip() for item in data.split(",")]
             name = player_data[0]
