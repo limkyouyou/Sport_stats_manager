@@ -17,6 +17,7 @@ FootballPlayer: Connor O'Reilly,31,Dublin Warriors,4,Ireland,4700000,,21
 FootballPlayer: Isaiah Bennett,28,Miami Wave,7,USA,,,16,3300
 FootballPlayer: Frederik Olsen,25,Copenhagen Knights,10,Denmark,,,,2800
 FootballPlayer: Kofi Mensah,24,Accra Storm,2
+FootballPlayer: Kofi Mensah,21,Atlanta Hawks,6,USA,3500000,19,21
 Swimmer: Lina Sato,27,Butterfly,Japan,,56.8
 Swimmer: Nina Petrovic,30,Breaststroke,,,,
 Swimmer: Omar El-Sayed,22,Freestyle,Egypt,,51.9

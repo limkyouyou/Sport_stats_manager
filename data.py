@@ -8,11 +8,20 @@ from basketball import BasketballPlayer
 class Data:
     def __init__(self):
         self._athletes = []
+        self.filename = None
+
+    @property
+    def athletes(self):
+        return self._athletes
     
-    def load_data(self, rawData : list[str]) -> bool:
+    def filename(self) -> str:
+        return self._filename
+    
+    def load_data(self, rawData : list[str], filename: str) -> bool:
         if not rawData:
             return False
         
+        self.filename = filename
         for line in rawData:
             line = line.strip()
             if not line:
@@ -33,10 +42,6 @@ class Data:
             if athlete:
                 self._athletes.append(athlete)
         return True
-
-    @property
-    def athletes(self):
-        return self._athletes
     
     def get_statistics(self):
         stats = [
@@ -83,3 +88,10 @@ class Data:
             else:
                 athlete.decrement_counter()
         self._athletes = remaining_athletes
+
+    def save_data(self) -> list[str]:
+        if not self.filename:
+            return []  # no known file to overwrite
+        
+        lines = [str(athlete) for athlete in self.athletes]  # or str(athlete)
+        return lines

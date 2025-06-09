@@ -39,6 +39,20 @@ class HockeyPlayer(Athlete):
         super().decrement_counter()
         HockeyPlayer.total_hockey_players = max(0, HockeyPlayer.total_hockey_players - 1)
 
+    def __str__(self):
+        values = [
+            self._name,
+            str(self._age),
+            self._country or "",
+            str(self._salary) if self._salary is not None else "",
+            self._position.value if self._position else "",
+            str(self._goal_scored) if self._goal_scored is not None else "",
+            self._stick_brand or "",
+            str(self._skates_size) if self._skates_size is not None else "",
+        ]
+        return f"HockeyPlayer: {','.join(values)}"
+
+
     @staticmethod
     def print_creation_log(instance):
         print(f"Hockey Player '{instance.name}', {instance.age} created; total # of hockey players {HockeyPlayer.total_hockey_players}.")

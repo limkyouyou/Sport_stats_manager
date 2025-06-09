@@ -14,7 +14,7 @@ class AthletesManagerApp:
             if choice == '1':
                 filename = GUI.get_filename()
                 raw_data = Util.load_file(filename)
-                is_file_loaded = self.data.load_data(raw_data)
+                is_file_loaded = self.data.load_data(raw_data, filename)
                 GUI.display_file_loaded_message(is_file_loaded)
             elif choice == '2':
                 if self.data.athletes:
@@ -28,7 +28,7 @@ class AthletesManagerApp:
                     atheltes_found = self.data.find_athlete_by_name(athlete_name)
                     if atheltes_found:
                         if len(atheltes_found) > 1:
-                            GUI.display_message(f"Multiple athletes found with the name '{athlete_name}':")
+                            GUI.display_message(f"Multiple athletes found with the name '{athlete_name}'")
                             confirmation = GUI.get_confirmation("Do you want to delete all of them?")
                             if not confirmation:
                                 continue
@@ -38,7 +38,13 @@ class AthletesManagerApp:
                 else:
                     GUI.display_file_loaded_message(False)
             elif choice == '4':
-                continue
+                filename = self.data.filename
+                confirmation = GUI.get_confirmation(f"Do you want to save and overwrite to {filename}?")
+                if not confirmation:
+                    continue
+                lines = self.data.save_data()
+                Util.save_file(filename, lines)
+
             elif choice == '5':
                 continue
             elif choice == '6':

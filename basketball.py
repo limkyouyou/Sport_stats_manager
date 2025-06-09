@@ -32,6 +32,21 @@ class BasketballPlayer(BallPlayer):
         super().decrement_counter()
         BasketballPlayer.total_basketball_players = max(0, BasketballPlayer.total_basketball_players - 1)
 
+    def __str__(self):
+        values = [
+            self._name,
+            str(self._age),
+            self._team_name or "",
+            str(self._jersey_number) if self._jersey_number is not None else "",
+            self._country or "",
+            str(self._salary) if self._salary is not None else "",
+            self._endorsement or "",
+            str(self._three_point_pct) if self._three_point_pct is not None else "",
+            str(self._rebounds) if self._rebounds is not None else "",
+        ]
+        return f"BasketballPlayer: {','.join(values)}"
+
+
     @staticmethod
     def print_creation_log(instance):
         print(f"Basketball Player '{instance.name}', {instance.age} created; total # of basketball players {BasketballPlayer.total_basketball_players}.")

@@ -36,6 +36,18 @@ class Swimmer(Athlete):
         super().decrement_counter()
         Swimmer.total_swimmers = max(0, Swimmer.total_swimmers - 1)
 
+    def __str__(self):
+        values = [
+            self._name,
+            str(self._age),
+            self._stroke_style.value if self._stroke_style else "",
+            self._country or "",
+            str(self._salary) if self._salary is not None else "",
+            str(self._personal_best_time) if self._personal_best_time is not None else "",
+        ]
+        return f"Swimmer: {','.join(values)}"
+
+
     @staticmethod
     def print_creation_log(instance):
         print(f"Swimmer '{instance.name}', {instance.age} created; total # of swimmers {Swimmer.total_swimmers}.")

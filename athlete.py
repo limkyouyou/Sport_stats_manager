@@ -25,13 +25,13 @@ class Athlete:
     
     @property
     def salary(self) -> float:
-        return self.__salary
+        return self._salary
     
     @salary.setter
     def salary(self, new_salary: float):
         if new_salary < 0:
             raise ValueError("Salary cannot be negative")
-        self.__salary = new_salary
+        self._salary = new_salary
 
     
     def print_stats(self):
@@ -44,7 +44,7 @@ class Athlete:
         Athlete.total_athletes = max(0, Athlete.total_athletes - 1)
 
     def __str__(self):
-        return f"Athlete(name={self._name}, age={self._age}, country={self._country}, salary={self._salary})"
+        pass
 
     @staticmethod
     def print_creation_log(instance):

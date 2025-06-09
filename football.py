@@ -31,6 +31,21 @@ class FootballPlayer(BallPlayer):
     def decrement_counter(self):
         super().decrement_counter()
         FootballPlayer.total_football_players = max(0, FootballPlayer.total_football_players - 1)
+
+    def __str__(self):
+        values = [
+            self._name,
+            str(self._age),
+            self._team_name or "",
+            str(self._jersey_number) if self._jersey_number is not None else "",
+            self._country or "",
+            str(self._salary) if self._salary is not None else "",
+            self._endorsement or "",
+            str(self._touchdowns) if self._touchdowns is not None else "",
+            str(self._passing_yards) if self._passing_yards is not None else "",
+        ]
+        return f"FootballPlayer: {','.join(values)}"
+
     
     @staticmethod
     def print_creation_log(instance):
