@@ -32,7 +32,7 @@ class HockeyPlayer(Athlete):
     def print_stats(self):
         goals = self._goal_scored if self._goal_scored is not None else 0
         team = self._team if self._team else "Unknown Team"
-        position = self._position if self._position else "Unknown Position"
+        position = self._position.value if self._position else "Unknown Position"
         print(f"{self.name} scored {goals} goals for {team} as a {position}.")
 
     def print_endorsement(self):
