@@ -7,4 +7,4 @@ class Data:
         
         parsedData = []
         for line in rawData:
-            
+            pass
