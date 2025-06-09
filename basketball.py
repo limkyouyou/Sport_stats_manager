@@ -1,7 +1,7 @@
 from typing import Optional
 from ball import BallPlayer
 
-class FootballPlayer(BallPlayer):
+class BasketballPlayer(BallPlayer):
     def __init__(
         self,
         name: str,
@@ -11,24 +11,24 @@ class FootballPlayer(BallPlayer):
         country: Optional[str] = None,
         salary: Optional[float] = None,
         endorsement: Optional[str] = None,
-        touchdowns: Optional[int] = None,
-        passing_yards: Optional[int] = None,
+        three_point_pct: Optional[float] = None,
+        rebounds: Optional[int] = None,
     ):
         super().__init__(name, age, team_name, jersey_number, country, salary, endorsement)
-        self._touchdowns = touchdowns
-        self._passing_yards = passing_yards
+        self._three_point_pct = three_point_pct
+        self._rebounds = rebounds
 
     def print_stats(self):
-        touchdowns = self._touchdowns if self._touchdowns is not None else 0
-        passing_yards = self._passing_yards if self._passing_yards is not None else 0
-        print(f"{self.name} scored {touchdowns} touchdowns and has passed {passing_yards} yards.")
-    
+        three_point_pct = self._three_point_pct if self._three_point_pct is not None else 0.0
+        rebounds = self._rebounds if self._rebounds is not None else 0
+        print(f"{self.name} has a three-point percentage of {three_point_pct:.2f} and {rebounds} rebounds.")
+
     @staticmethod
-    def parse(raw_data: str) -> "FootballPlayer":
+    def parse(raw_data: str) -> "BasketballPlayer":
         try:
             prefix, data = raw_data.split(":", 1)
-            if prefix.strip() != "FootballPlayer":
-                raise ValueError("Invalid player for FootballPlayer")
+            if prefix.strip() != "BasketballPlayer":
+                raise ValueError("Invalid player for BasketballPlayer")
             
             player_data = [item.strip() for item in data.split(",")]
             name = player_data[0]
@@ -38,9 +38,10 @@ class FootballPlayer(BallPlayer):
             country = player_data[4] if len(player_data) > 4 and player_data[4] else None
             salary = float(player_data[5]) if len(player_data) > 5 and player_data[5] else None
             endorsement = player_data[6] if len(player_data) > 6 and player_data[6] else None
-            passing_yards = player_data[7] if len(player_data) > 7 and player_data[7] else None
+            three_point_pct = float(player_data[7]) if len(player_data) > 7 and player_data[7] else None
+            rebounds = int(player_data[8]) if len(player_data) > 8 and player_data[8] else None
 
-            return FootballPlayer(
+            return BasketballPlayer(
                 name=name,
                 age=age,
                 team_name=team_name,
@@ -48,8 +49,9 @@ class FootballPlayer(BallPlayer):
                 country=country,
                 salary=salary,
                 endorsement=endorsement,
-                passing_yards=passing_yards
+                three_point_pct=three_point_pct,
+                rebounds=rebounds
             )
         except (ValueError, IndexError) as e:
-            print(f"Error parsing FootballPlayer data: {e}")
+            print(f"Error parsing BasketballPlayer data: {e}")
             return None

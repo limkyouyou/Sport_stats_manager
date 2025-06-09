@@ -1,6 +1,7 @@
 from hockey import HockeyPlayer
 from swimmer import Swimmer
 from football import FootballPlayer
+from basketball import BasketballPlayer
 
 class Data:
     def __init__(self):
@@ -21,6 +22,8 @@ class Data:
                 athlete = Swimmer.parse(line)
             elif line.startswith("FootballPlayer:"):
                 athlete = FootballPlayer.parse(line)
+            elif line.startswith("BasketballPlayer:"):
+                athlete = BasketballPlayer.parse(line)
             else:
                 print(f"Unknown athlete type in line: {line}")
                 continue
