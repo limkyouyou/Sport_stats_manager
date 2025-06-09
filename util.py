@@ -1,8 +1,8 @@
 
 class Util:
     def __init__(self):
-        self.__file_data = None
-
+        pass
+    
     def loadFile(filename):
         try:
             with open(filename, 'r') as file:
