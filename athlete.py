@@ -8,15 +8,15 @@ class Athlete:
 
     @property
     def name(self) -> str:
-        return self.__name
+        return self._name
     
     @property
     def age(self) -> int:
-        return self.__age
+        return self._age
     
     @property
     def country(self) -> str:
-        return self.__country
+        return self._country
     
     @property
     def salary(self) -> float:
@@ -36,4 +36,4 @@ class Athlete:
         pass
 
     def __str__(self):
-        return f"Athlete(name={self.__name}, age={self.__age}, country={self.__country}, salary={self.__salary})"
+        return f"Athlete(name={self._name}, age={self._age}, country={self._country}, salary={self._salary})"

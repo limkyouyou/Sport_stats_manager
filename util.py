@@ -3,7 +3,7 @@ class Util:
     def __init__(self):
         pass
     
-    def loadFile(filename):
+    def load_file(filename):
         try:
             with open(filename, 'r') as file:
                 return file.readlines()
