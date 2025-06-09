@@ -52,11 +52,11 @@ class GUI:
             print(f"{stat_name}:")
             print("-------------------")
             if stat_name == "Endorsements":
-                for endorsement, count in stat.items():
+                for endorsement, count in stat:
                     print(f"{endorsement} ({str(count)})")
             else:
-                for key, value in stat.items():
-                    print(f"{str(value)} {key}")
+                for name, count in stat:
+                    print(f"{str(count)} {name}")
         print()
 
     @staticmethod
