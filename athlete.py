@@ -1,10 +1,10 @@
 
 class Athlete:
     def __init__(self, name : str, age : int, country : str, salary : float, ):
-        self.__name = name
-        self.__age = age
-        self.__country = country
-        self.__salary = salary
+        self._name = name
+        self._age = age
+        self._country = country
+        self._salary = salary
 
     @property
     def name(self) -> str:
@@ -29,10 +29,10 @@ class Athlete:
         self.__salary = new_salary
 
     
-    def _print_stats(self):
+    def print_stats(self):
         pass
 
-    def _print_endorsement(self):
+    def print_endorsement(self):
         pass
 
     def __str__(self):
