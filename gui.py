@@ -1,4 +1,9 @@
 from athlete import Athlete
+from hockey import HockeyPlayer
+from swimmer import Swimmer
+from ball import BallPlayer
+from football import FootballPlayer
+from basketball import BasketballPlayer
 
 class GUI:
 
@@ -20,11 +25,11 @@ class GUI:
 
     @staticmethod
     def display_exit_app_message():
-        print("Thanks for using the Athlete Database. Goodbye!\n")
+        print("\nThanks for using the Athlete Database. Goodbye!\n")
 
     @staticmethod
     def display_invalid_input_message_main_menu():
-        print("Invalid choice, please choose an option from the menu (1-7).\n")
+        print("\nInvalid choice, please choose an option from the menu (1-7).\n")
 
     @staticmethod
     def get_filename() -> str:
@@ -39,8 +44,27 @@ class GUI:
         print()
 
     @staticmethod
-    def display_stats(athletes : list[Athlete]):
-        print("=========== Athlete Statistics ===========")
+    def display_stats(player_stats : dict):
+        print()
+        print("======== Athlete Stats ========")
+        for stat_name, stat in player_stats.items():
+            print()
+            print(f"{stat_name}:")
+            print("-------------------")
+            if stat_name == "Endorsements":
+                for endorsement, count in stat.items():
+                    print(f"{endorsement} ({str(count)})")
+            else:
+                for key, value in stat.items():
+                    print(f"{str(value)} {key}")
+        print()
+
+    @staticmethod
+    def displat_all_athletes_stats(athletes: list[Athlete]):
+        print()
+        print("======== All Athletes Stats ========")
         for athlete in athletes:
             athlete.print_stats()
         print()
+            
+                

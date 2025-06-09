@@ -47,7 +47,8 @@ class FootballPlayer(BallPlayer):
             country = player_data[4] if len(player_data) > 4 and player_data[4] else None
             salary = float(player_data[5]) if len(player_data) > 5 and player_data[5] else None
             endorsement = player_data[6] if len(player_data) > 6 and player_data[6] else None
-            passing_yards = player_data[7] if len(player_data) > 7 and player_data[7] else None
+            touchdowns = int(player_data[7]) if len(player_data) > 7 and player_data[7] else None
+            passing_yards = player_data[8] if len(player_data) > 8 and player_data[8] else None
 
             return FootballPlayer(
                 name=name,
@@ -57,6 +58,7 @@ class FootballPlayer(BallPlayer):
                 country=country,
                 salary=salary,
                 endorsement=endorsement,
+                touchdowns=touchdowns,
                 passing_yards=passing_yards
             )
         except (ValueError, IndexError) as e:

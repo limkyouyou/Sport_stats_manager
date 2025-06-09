@@ -18,7 +18,8 @@ class AthletesManagerApp:
                 GUI.display_file_loaded_message(is_file_loaded)
             elif choice == '2':
                 if self.data.athletes:
-                    GUI.display_stats(self.data.athletes)
+                    players_stats = self.data.get_statistics()
+                    GUI.display_stats(players_stats)
                 else:
                     GUI.display_file_loaded_message(False)
             elif choice == '3':
@@ -32,6 +33,8 @@ class AthletesManagerApp:
             elif choice == '7':
                 GUI.display_exit_app_message()
                 break
+            elif choice == '0':
+                GUI.displat_all_athletes_stats(self.data.athletes)
             else:
                 GUI.display_invalid_input_message_main_menu()
 
