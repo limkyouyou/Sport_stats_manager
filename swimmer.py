@@ -2,11 +2,13 @@ from enum import Enum
 from typing import Optional
 from athlete import Athlete
 
+
 class StrokeStyle(Enum):
     FREESTYLE = "Freestyle"
     BUTTERFLY = "Butterfly"
     BACKSTROKE = "Backstroke"
     BREASTSTROKE = "Breaststroke"
+
 
 class Swimmer(Athlete):
     total_swimmers = 0
@@ -14,11 +16,11 @@ class Swimmer(Athlete):
     def __init__(
         self,
         name: str,
-        age : int,
-        stroke_style : Optional[str] = None,
-        country : Optional[str] = None,
-        salary : Optional[float] = None,
-        personal_best_time : Optional[float] = None,
+        age: int,
+        stroke_style: Optional[str] = None,
+        country: Optional[str] = None,
+        salary: Optional[float] = None,
+        personal_best_time: Optional[float] = None,
     ):
         super().__init__(name, age, country, salary)
         self._stroke_style = StrokeStyle(stroke_style) if stroke_style else None
@@ -78,3 +80,7 @@ class Swimmer(Athlete):
         except (ValueError, IndexError) as e:
             print(f"Error parsing Swimmer data: {e}")
             return None
+
+    @classmethod
+    def get_total_athletes(cls) -> int:
+        return cls.total_swimmers

@@ -1,8 +1,7 @@
-
 class Athlete:
     total_athletes = 0
 
-    def __init__(self, name : str, age : int, country : str, salary : float, ):
+    def __init__(self, name: str, age: int, country: str, salary: float, ):
         self._name = name
         self._age = age
         self._country = country
@@ -49,3 +48,7 @@ class Athlete:
     @staticmethod
     def print_creation_log(instance):
         print(f"Athlete '{instance.name}', {instance.age} created; total # of athletes {Athlete.total_athletes}.")
+
+    @classmethod
+    def get_total_athletes(cls) -> int:
+        return cls.total_athletes

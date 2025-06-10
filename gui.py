@@ -1,9 +1,7 @@
+import matplotlib.pyplot as plt
 from athlete import Athlete
-from hockey import HockeyPlayer
-from swimmer import Swimmer
 from ball import BallPlayer
-from football import FootballPlayer
-from basketball import BasketballPlayer
+
 
 class GUI:
 
@@ -74,6 +72,7 @@ class GUI:
     @staticmethod
     def display_message(message: str):
         print(message)
+        print()
 
     @staticmethod
     def get_string_input(prompt: str) -> str:
@@ -89,3 +88,43 @@ class GUI:
                 return False
             else:
                 print("Invalid input, please enter 'y' or 'n'.")
+
+    @staticmethod
+    def display_athlete_info(athlete: Athlete):
+        print("\n======= Athlete Info =======")
+        if athlete:
+            athlete.print_stats()
+            if isinstance(athlete, BallPlayer):
+                athlete.print_endorsement()
+        else:
+            print("No athlete found with that name.")
+        print()
+
+    def _display_char_submenu():
+        print()
+        print("======= Display Chart =======")
+        print("1. Number of Athletes (Level 1 Classes)")
+        print("2. Number of Athletes (Leaf Classes)")
+        print("3. Average Salary by Level 1 Class")
+        print("4. Average Salary by Leaf Class")
+        print("5. Endorsements")
+        print("================================")
+        print()
+
+    @staticmethod
+    def get_chart_menu_choice() -> str:
+        GUI._display_char_submenu()
+        return input("Enter your choice (1-5): ").strip()
+
+    @staticmethod
+    def display_pie_chart(data: dict[str, int], title: str):
+        labels = list(data.keys())
+        sizes = list(data.values())
+
+        plt.figure(figsize=(6, 6))
+        plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140)
+        plt.title(title)
+        plt.axis('equal')
+        plt.show()
+
+    

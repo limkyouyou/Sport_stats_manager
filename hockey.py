@@ -2,24 +2,26 @@ from enum import Enum
 from typing import Optional
 from athlete import Athlete
 
+
 class HockeyPosition(Enum):
     FORWARD = "Forward"
     DEFENSEMAN = "Defenseman"
     GOALIE = "Goalie"
+
 
 class HockeyPlayer(Athlete):
     total_hockey_players = 0
 
     def __init__(
         self, 
-        name : str, 
-        age : int, 
-        country : Optional[str] = None, 
-        salary : Optional[float] = None,
-        position : Optional[str] = None, 
-        goal_scored : Optional[int] = None, 
-        stick_brand : Optional[str] = None, 
-        skates_size : Optional[int] = None
+        name: str, 
+        age: int, 
+        country: Optional[str] = None, 
+        salary: Optional[float] = None,
+        position: Optional[str] = None, 
+        goal_scored: Optional[int] = None, 
+        stick_brand: Optional[str] = None, 
+        skates_size: Optional[int] = None
     ):
         super().__init__(name, age, country, salary)
         self._position = HockeyPosition(position) if position else None
@@ -37,9 +39,10 @@ class HockeyPlayer(Athlete):
 
     def decrement_counter(self):
         super().decrement_counter()
-        HockeyPlayer.total_hockey_players = max(0, HockeyPlayer.total_hockey_players - 1)
+        HockeyPlayer.total_hockey_players = max(0, HockeyPlayer.total_hockey_players - 1)       # Avoids going below 0
 
     def __str__(self):
+        """Returns a comma-separated string of the player's attributes, formatted for file output."""
         values = [
             self._name,
             str(self._age),
@@ -88,3 +91,7 @@ class HockeyPlayer(Athlete):
         except Exception as e:
             print(f"Error parsing HockeyPlayer data: {e}")
             return None
+
+    @classmethod
+    def get_total_athletes(cls) -> int:
+        return cls.total_hockey_players
